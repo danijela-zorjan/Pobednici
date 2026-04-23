@@ -28,5 +28,11 @@ namespace Pobednici
             UcenikDashboard dashboard = new UcenikDashboard();
             dashboard.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Profesor profesor = new Profesor();
+            profesor.Show();
+        }
     }
 }
