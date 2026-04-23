@@ -1,44 +1,81 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Pobednici
 {
-    public partial class Form1: Form
+    public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-            Ucenici ucenik =    new Ucenici();
-            ucenik.Show();
+            txtPassword.UseSystemPasswordChar = !chkShowPassword.Checked;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            UcenikDashboard dashboard = new UcenikDashboard();
-            dashboard.Show();
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                lblPoruka.Text = "Unesite korisničko ime i lozinku.";
+                return;
+            }
+
+            // 🔹 FAKE LOGIN (SIMULACIJA)
+            string uloga = "";
+
+            if (username == "ucenik" && password == "1234")
+                uloga = "Ucenik";
+            else if (username == "profesor" && password == "1234")
+                uloga = "Profesor";
+            else if (username == "admin" && password == "1234")
+                uloga = "Admin";
+            else if (username == "superadmin" && password == "1234")
+                uloga = "SuperAdmin";
+            else
+            {
+                lblPoruka.Text = "Pogrešno korisničko ime ili lozinka.";
+                return;
+            }
+
+            lblPoruka.Text = "Uspešna prijava.";
+
+            this.Hide();
+
+            // 🔹 PREUSMERAVANJE NA FORME
+            if (uloga == "Ucenik")
+            {
+                UcenikDashboard forma = new UcenikDashboard();
+                forma.ShowDialog();
+            }
+            else if (uloga == "Profesor")
+            {
+                Profesor forma = new Profesor();
+                forma.ShowDialog();
+            }
+            else if (uloga == "Admin")
+            {
+                AdminDashboard forma = new AdminDashboard();
+                forma.ShowDialog();
+            }
+            else if (uloga == "SuperAdmin")
+            {
+                SuperAdmin forma = new SuperAdmin();
+                forma.ShowDialog();
+            }
+
+            this.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
-            Profesor profesor = new Profesor();
-            profesor.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            AdminDashboard adminDashboard = new AdminDashboard();
-            adminDashboard.Show();
+            Registracija forma = new Registracija();
+            forma.ShowDialog();
         }
     }
 }
