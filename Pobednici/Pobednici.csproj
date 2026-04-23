@@ -152,6 +152,9 @@
     <EmbeddedResource Include="SuperAdmin.resx">
       <DependentUpon>SuperAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UcenikDashboard.resx">
+      <DependentUpon>UcenikDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
