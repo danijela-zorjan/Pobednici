@@ -16,5 +16,17 @@ namespace Pobednici
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Ucenici ucenik =    new Ucenici();
+            ucenik.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UcenikDashboard dashboard = new UcenikDashboard();
+            dashboard.Show();
+        }
     }
 }
