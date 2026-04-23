@@ -34,5 +34,11 @@ namespace Pobednici
             Profesor profesor = new Profesor();
             profesor.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AdminDashboard adminDashboard = new AdminDashboard();
+            adminDashboard.Show();
+        }
     }
 }
